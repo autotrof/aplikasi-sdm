@@ -14,11 +14,13 @@ return new class extends Migration
         Schema::create('attendances', function (Blueprint $table) {
             $table->id();
             $table->foreignId('employee_id')->constrained();
+            $table->date('date');
             $table->dateTime('time_in');
             $table->dateTime('time_out');
             $table->string('description');
             $table->char('status');
             $table->timestamps();
+            $table->unique('employee_id', 'date');
         });
     }
 
